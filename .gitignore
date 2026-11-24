@@ -1,0 +1,11 @@
+dist/
+node_modules/
+.amp/
+*.app/
+*.zip
+*.apk
+apps/android/.gradle/
+apps/android/**/build/
+apps/android/local.properties
+apps/windows/bin/
+apps/windows/obj/

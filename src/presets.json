@@ -1,0 +1,10 @@
+{
+  "Drift": ["#183342", "#497889", "#b4bca0", "#dca56c", "#602d40"],
+  "Nord": ["#2e3440", "#5e81ac", "#88c0d0", "#a3be8c", "#eceff4"],
+  "Dracula": ["#282a36", "#bd93f9", "#ff79c6", "#50fa7b", "#8be9fd"],
+  "Taiga": ["#172e2b", "#38664c", "#8ba879", "#d5c69b", "#e9a66b"],
+  "Electric reference": ["#203060", "#2040c0", "#a0f080", "#80d0f0", "#e06080"],
+  "Acid blue": ["#060f39", "#063bff", "#d4ff00", "#00eaff", "#f6ffb2"],
+  "Cyan pink": ["#091334", "#00dfff", "#ff168b", "#7effed", "#ffe6ff"],
+  "Solar flare": ["#240d35", "#ff3154", "#ffb000", "#fff000", "#00d8ff"]
+}

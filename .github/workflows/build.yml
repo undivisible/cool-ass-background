@@ -1,0 +1,58 @@
+name: Build and test
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with: { bun-version: '1.3.11' }
+      - run: bun test && bun run build
+      - run: cd dist && zip -r ../cool-ass-background-web.zip .
+      - uses: actions/upload-artifact@v4
+        with: { name: web, path: cool-ass-background-web.zip }
+  macos:
+    strategy:
+      matrix:
+        os: [macos-15, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with: { bun-version: '1.3.11' }
+      - run: sh apps/macos/build.sh
+      - uses: actions/upload-artifact@v4
+        with: { name: '${{ matrix.os }}', path: 'out/*.zip' }
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with: { bun-version: '1.3.11' }
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: '8.0.x' }
+      - run: bun run build
+      - run: dotnet publish apps/windows/Background.csproj -c Release -r win-x64 --self-contained true -o out/windows
+      - shell: pwsh
+        run: |
+          Copy-Item LICENSE,NOTICE.md out/windows/
+          Compress-Archive -Path out/windows/* -DestinationPath out/cool-ass-background-windows-x64.zip
+      - uses: actions/upload-artifact@v4
+        with: { name: windows, path: 'out/*.zip' }
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.11.1' }
+      - run: gradle -p apps/android assembleDebug lintDebug
+      - run: cp apps/android/app/build/outputs/apk/debug/app-debug.apk cool-ass-background-android-debug.apk
+      - uses: actions/upload-artifact@v4
+        with: { name: android, path: cool-ass-background-android-debug.apk }

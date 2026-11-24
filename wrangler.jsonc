@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cool-ass-background",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-11-24",
+  "assets": { "directory": "./dist", "binding": "ASSETS", "run_worker_first": true, "not_found_handling": "none" },
+  "routes": [{ "pattern": "background.undivisible.dev", "custom_domain": true }],
+  "observability": { "enabled": true, "traces": { "enabled": true } }
+}

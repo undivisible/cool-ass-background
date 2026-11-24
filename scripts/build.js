@@ -1,0 +1,12 @@
+import { cp, mkdir, rm } from 'node:fs/promises';
+await rm('dist', { recursive: true, force: true });
+await mkdir('dist', { recursive: true });
+const result = await Bun.build({ entrypoints: ['src/index.js'], outdir: 'dist', naming: 'background.js', target: 'browser', minify: true });
+if (!result.success) throw new AggregateError(result.logs, 'Build failed');
+await cp('demo', 'dist', { recursive: true });
+const demo = await Bun.build({ entrypoints: ['demo/demo.js'], outdir: 'dist', naming: 'demo.js', target: 'browser', format: 'iife', minify: true });
+if (!demo.success) throw new AggregateError(demo.logs, 'Demo build failed');
+await cp('src/presets.json', 'dist/presets.json');
+await cp('LICENSE', 'dist/LICENSE');
+await cp('NOTICE.md', 'dist/NOTICE.md');
+console.info('Built dependency-free website module and demo in dist/');

@@ -1,0 +1,12 @@
+{
+  "name": "cool-ass-background",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "build": "bun scripts/build.js",
+    "dev": "bun scripts/serve.js",
+    "test": "bun test"
+  }
+}
