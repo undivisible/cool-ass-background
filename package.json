@@ -8,5 +8,8 @@
     "build": "bun scripts/build.js",
     "dev": "bun scripts/serve.js",
     "test": "bun test"
+  },
+  "devDependencies": {
+    "wrangler": "4.167.0"
   }
 }
