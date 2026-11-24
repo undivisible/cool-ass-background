@@ -1,4 +1,4 @@
-# Cool ass background
+# Background
 
 The noise-driven ASCII field from [undivisible.dev](https://undivisible.dev),
 extracted into a framework-free WebGL shader and native wallpaper hosts.
@@ -7,9 +7,9 @@ ISC licensed. No telemetry, microphone capture, or bundled music.
 **[Live demo](https://background.undivisible.dev)** ·
 **[Wallpaper downloads](https://github.com/undivisible/cool-ass-background/releases)**
 
-[![Actual shader and track-color crossfade demo](docs/demo-preview.gif)](https://background.undivisible.dev/demo.mp4)
+[![Background: actual shader and track-color crossfade demo](docs/demo-preview.gif)](https://background.undivisible.dev/demo.mp4)
 
-**[Watch the 28-second video](https://background.undivisible.dev/demo.mp4)** — actual
+**[Watch Background in motion](https://background.undivisible.dev/demo.mp4)**: actual
 Chromium capture, with a moving pointer, simulated track-color crossfade,
 ASCII/raw-field toggles and a reference-preset switch. No generated footage.
 
@@ -87,15 +87,19 @@ See the verification table below before treating a binary as device-tested.
 
 | Download | Setup |
 |---|---|
-| [macOS Apple Silicon](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.0/cool-ass-background-macos-arm64.zip) | Unzip, open app, use ≋ menu |
-| [macOS Intel](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.0/cool-ass-background-macos-x86_64.zip) | Unzip, open app, use ≋ menu |
-| [Windows x64](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.0/cool-ass-background-windows-x64.zip) | Unzip whole archive, run executable |
-| [Android preview APK](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.0/cool-ass-background-android-debug.apk) | Install, configure, choose live wallpaper |
-| [Website module + demo](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.0/cool-ass-background-web.zip) | Unzip onto your own HTTPS site |
+| [macOS Apple Silicon](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.1/cool-ass-background-macos-arm64.zip) | Unzip, open app, use ≋ menu |
+| [macOS Intel](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.1/cool-ass-background-macos-x86_64.zip) | Unzip, open app, use ≋ menu |
+| [Windows x64](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.1/cool-ass-background-windows-x64.zip) | Unzip whole archive, run executable |
+| [Android preview APK](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.1/cool-ass-background-android-debug.apk) | Install, configure, choose live wallpaper |
+| [Website module + demo](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.1/cool-ass-background-web.zip) | Unzip onto your own HTTPS site |
+
+Version 0.1.1 uses **Background** for all product display names. Repository,
+archive filenames, Windows executable name and application identifiers stay
+unchanged for compatibility. Historical 0.1.0 binaries retain their original labels.
 
 ### macOS 13+
 
-Unzip the matching arm64 or x86_64 archive and move **Cool Ass Background.app**
+Unzip the matching arm64 or x86_64 archive and move **Background.app**
 to Applications. Open it; the ≋ menu bar icon offers palettes, local
 Spotify/Music sync, Last.fm and Quit. All displays get noninteractive windows
 behind desktop icons, without activating the players. Local sync requires
@@ -119,7 +123,7 @@ relaunch it. Binaries are unsigned and may trigger SmartScreen.
 ### Android 13+, OpenGL ES 2.0
 
 Install `cool-ass-background-android-debug.apk` after explicitly allowing
-installation from your download source. Open **Cool Ass Background**, choose
+installation from your download source. Open **Background**, choose
 Preset / Last.fm / Local playback, save, then **Preview & set live wallpaper**.
 Local sync needs explicitly granted notification access for active media
 sessions; the app does not read notification text. Players must expose album

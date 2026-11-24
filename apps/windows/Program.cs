@@ -11,13 +11,13 @@ internal static class Program {
 
 sealed class Wallpaper : Form {
     readonly WebView2 web = new() { Dock = DockStyle.Fill };
-    readonly NotifyIcon tray = new() { Icon = SystemIcons.Application, Text = "Cool ass background", Visible = true };
+    readonly NotifyIcon tray = new() { Icon = SystemIcons.Application, Text = "Background", Visible = true };
     readonly System.Windows.Forms.Timer timer = new() { Interval = 4000 };
     bool local, busy;
     int generation;
     nint desktop;
     public Wallpaper() {
-        FormBorderStyle = FormBorderStyle.None; ShowInTaskbar = false; StartPosition = FormStartPosition.Manual;
+        Text = "Background"; FormBorderStyle = FormBorderStyle.None; ShowInTaskbar = false; StartPosition = FormStartPosition.Manual;
         Bounds = SystemInformation.VirtualScreen; Controls.Add(web);
         var menu = new ContextMenuStrip();
         var presets = JsonSerializer.Deserialize<Dictionary<string, string[]>>(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "web/presets.json")))!;

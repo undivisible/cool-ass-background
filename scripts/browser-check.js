@@ -5,6 +5,16 @@
   const check = (condition, name) => { if (!condition) throw new Error(name); };
   check(document.documentElement.dataset.ready === 'true', 'demo initialized');
   check(document.documentElement.scrollWidth <= innerWidth, 'no horizontal overflow');
+  check(document.title === 'Background', 'product title');
+  check(!document.querySelector('h1, header, footer'), 'no page copy around the shader');
+  const field = document.querySelector('#field').getBoundingClientRect();
+  check(field.x === 0 && field.y === 0 && field.width === innerWidth && field.height === innerHeight, 'edge-to-edge shader');
+  const panel = document.querySelector('.controls').getBoundingClientRect();
+  const links = document.querySelector('nav').getBoundingClientRect();
+  check(panel.left >= 0 && panel.top < 40 && links.top < 40 && links.right <= innerWidth && panel.right < links.left, 'separate corner controls and links');
+  for (const control of document.querySelectorAll('button, select, summary, a')) {
+    if (control.getClientRects().length) check(control.getBoundingClientRect().height >= 44, '44px control targets');
+  }
   const canvas = document.createElement('canvas'); canvas.style.cssText = 'width:320px;height:240px;position:fixed;right:0;bottom:0'; document.body.append(canvas);
   const bg = createBackground(canvas, { reducedMotion: true, ascii: false });
   const gl = canvas.getContext('webgl');

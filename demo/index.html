@@ -2,24 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cool ass background</title>
-  <meta name="description" content="The undivisible ASCII shader, for your website and wallpaper. Music-colored, framework-free, ISC licensed.">
+  <title>Background</title>
+  <meta name="description" content="Background, a reusable music-colored shader for websites and live wallpapers.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="field" aria-hidden="true"></canvas>
-  <main>
-    <header><h1>Cool ass<br>background</h1><p>The field from undivisible.dev.<br>Your colors. Your desktop. No framework.</p></header>
-    <section aria-label="Shader controls">
+  <main aria-label="Background">
+    <section class="controls" aria-label="Shader controls">
       <label for="preset">Palette</label><select id="preset"></select>
       <div class="actions"><button id="next-track">Simulate next track</button><button id="mode" aria-pressed="true">ASCII on</button><button id="pause" aria-pressed="false">Pause</button></div>
-      <p id="status" role="status">Choose a palette or connect your music.</p>
+      <p id="status" role="status"></p>
       <details><summary>Music sync</summary>
         <form id="lastfm"><label for="user">Last.fm username</label><input id="user" autocomplete="off" required><label for="key">Your Last.fm API key (not your password)</label><input id="key" autocomplete="off" required><div class="actions"><button>Connect Last.fm</button><button type="button" id="disconnect">Disconnect</button></div></form>
-        <p>Polls every 30 seconds. Nothing is stored. Local playback is available in the wallpaper apps and through the website player API.</p>
       </details>
     </section>
-    <footer><a href="https://github.com/undivisible/cool-ass-background#website-embed">Embed instructions</a><a href="https://github.com/undivisible/cool-ass-background/releases">Wallpaper downloads</a><a href="https://github.com/undivisible/cool-ass-background#wallpaper-setup">Setup &amp; tested platforms</a><a href="demo.mp4">Watch recorded demo</a><a href="https://github.com/undivisible/cool-ass-background">Source · ISC</a></footer>
+    <nav aria-label="Project links"><a href="https://github.com/undivisible/cool-ass-background#website-embed">Embed</a><a href="https://github.com/undivisible/cool-ass-background/releases">Downloads</a><a href="https://github.com/undivisible/cool-ass-background#wallpaper-setup">Setup</a><a href="demo.mp4">Video</a><a href="https://github.com/undivisible/cool-ass-background">Source</a></nav>
   </main>
   <script src="demo.js" defer></script>
 </body>

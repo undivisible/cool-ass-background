@@ -16,7 +16,7 @@ public final class SettingsActivity extends Activity {
         var prefs = getSharedPreferences("settings", MODE_PRIVATE);
         var root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); root.setPadding(32, 32, 32, 32);
         var scroll = new ScrollView(this); scroll.addView(root); setContentView(scroll);
-        text(root, "Cool Ass Background", 26);
+        text(root, "Background", 26);
         text(root, "Choose a palette or sync source. All palette changes crossfade over 1.8 seconds.", 16);
         var palette = new Spinner(this);
         var names = new ArrayList<String>();
