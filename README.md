@@ -7,6 +7,12 @@ ISC licensed. No telemetry, microphone capture, or bundled music.
 **[Live demo](https://background.undivisible.dev)** ·
 **[Wallpaper downloads](https://github.com/undivisible/cool-ass-background/releases)**
 
+[![Actual shader and track-color crossfade demo](docs/demo-preview.gif)](https://background.undivisible.dev/demo.mp4)
+
+**[Watch the 28-second video](https://background.undivisible.dev/demo.mp4)** — actual
+Chromium capture, with a moving pointer, simulated track-color crossfade,
+ASCII/raw-field toggles and a reference-preset switch. No generated footage.
+
 The demo supports Nord, Dracula, Taiga, Electric reference, Acid blue,
 Cyan pink, Solar flare and Drift. Presets and track changes use the same
 interruptible 1.8-second palette crossfade. The reference image is not included.
@@ -79,6 +85,14 @@ Builds are preview distributions. Download from
 [Releases](https://github.com/undivisible/cool-ass-background/releases).
 See the verification table below before treating a binary as device-tested.
 
+| Download | Setup |
+|---|---|
+| [macOS Apple Silicon](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.0/cool-ass-background-macos-arm64.zip) | Unzip, open app, use ≋ menu |
+| [macOS Intel](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.0/cool-ass-background-macos-x86_64.zip) | Unzip, open app, use ≋ menu |
+| [Windows x64](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.0/cool-ass-background-windows-x64.zip) | Unzip whole archive, run executable |
+| [Android preview APK](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.0/cool-ass-background-android-debug.apk) | Install, configure, choose live wallpaper |
+| [Website module + demo](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.0/cool-ass-background-web.zip) | Unzip onto your own HTTPS site |
+
 ### macOS 13+
 
 Unzip the matching arm64 or x86_64 archive and move **Cool Ass Background.app**
@@ -119,10 +133,10 @@ uninstalling the previous preview first. No Android emulator/device is claimed.
 
 | Target | Status |
 |---|---|
-| Browser shader, palette transitions | Verification in progress |
-| macOS wallpaper | Source implemented; build/runtime verification pending |
-| Windows wallpaper | Source implemented; build verification pending; real desktop unverified |
-| Android live wallpaper | Source implemented; build/lint verification pending; real device unverified |
+| Browser shader, palette transitions | Chromium rendered all 8 distinct presets; actual artwork decode and 24 intermediate fade levels checked; desktop recording inspected |
+| macOS wallpaper | arm64 and Intel builds passed; desktop rendering behind Finder and native preset-menu selection exercised on the macOS satellite |
+| Windows wallpaper | x64 self-contained build passed; real Explorer/SMTC session unverified |
+| Android live wallpaper | APK build and Android lint passed; real device/GLES/session behavior unverified |
 | Real Last.fm / local player integration | Requires opt-in user credentials/player session; not yet end-to-end tested |
 
 ## Development
@@ -131,6 +145,8 @@ uninstalling the previous preview first. No Android emulator/device is claimed.
 bun test
 bun run build
 bun run dev
+# With the demo open in agent-browser:
+agent-browser --session shader --restore eval --stdin < scripts/browser-check.js
 # Native builds:
 sh apps/macos/build.sh
 dotnet publish apps/windows/Background.csproj -c Release -r win-x64 --self-contained true
@@ -139,6 +155,9 @@ gradle -p apps/android assembleDebug lintDebug   # Gradle 8.11.1, JDK 17, Androi
 
 `src/field.frag` and `src/presets.json` are shared by web and Android. Desktop
 apps bundle the actual web renderer, with no production-site dependency.
+The source noise is contrast-remapped so all five colors can appear; shape
+motion is analytic rather than the site's random CPU physics. These deliberate
+portability changes preserve the field's character, not pixel-identical output.
 Cloudflare hosting uses an independent Worker + ASSETS binding and custom
 domain, following Moonshine's deploy-cloudflare shape, not an SSH host or
 changes to any sister site. Build then `bunx wrangler deploy` with the account

@@ -9,4 +9,5 @@ if (!demo.success) throw new AggregateError(demo.logs, 'Demo build failed');
 await cp('src/presets.json', 'dist/presets.json');
 await cp('LICENSE', 'dist/LICENSE');
 await cp('NOTICE.md', 'dist/NOTICE.md');
+await cp('docs/demo.mp4', 'dist/demo.mp4');
 console.info('Built dependency-free website module and demo in dist/');

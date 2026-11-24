@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+  WRANGLER_SEND_METRICS: 'false'
 jobs:
   web:
     runs-on: ubuntu-latest
@@ -40,6 +43,14 @@ jobs:
       - shell: pwsh
         run: |
           Copy-Item LICENSE,NOTICE.md out/windows/
+          $packages = Join-Path $env:USERPROFILE '.nuget/packages'
+          Get-ChildItem $packages -Recurse -File | Where-Object { $_.Name -match '^(LICENSE|NOTICE|THIRD.?PARTY)' } | ForEach-Object {
+            $relative = [IO.Path]::GetRelativePath($packages, $_.FullName)
+            $target = Join-Path 'out/windows/third-party' $relative
+            New-Item -ItemType Directory -Force (Split-Path $target) | Out-Null
+            Copy-Item $_.FullName $target
+          }
+          if (!(Test-Path 'out/windows/third-party/microsoft.web.webview2/1.0.2903.40/LICENSE.txt')) { throw 'Missing WebView2 redistribution license' }
           Compress-Archive -Path out/windows/* -DestinationPath out/cool-ass-background-windows-x64.zip
       - uses: actions/upload-artifact@v4
         with: { name: windows, path: 'out/*.zip' }

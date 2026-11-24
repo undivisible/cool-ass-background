@@ -53,7 +53,8 @@ void main() {
   vec2 flow = vec2(fbm(p * 0.9 + vec2(t * 0.45, -t * 0.22)),
     fbm(p * 0.95 + vec2(-t * 0.18, t * 0.34)));
   vec2 warped = p + (flow - 0.5) * 0.55;
-  float fluid = clamp(fbm(warped * 1.45 + vec2(t * 0.26, -t * 0.12)), 0.0, 1.0);
+  // Expand the source's 0.79-amplitude field so all five accents can appear.
+  float fluid = smoothstep(0.12, 0.68, fbm(warped * 1.45 + vec2(t * 0.26, -t * 0.12)));
   vec3 color = palette(fluid) * clamp(0.52 + fluid * 0.9, 0.0, 1.0);
   float invert = max(shape(p, vec2(aspect * (0.5 + 0.29 * sin(t * 0.7)),
     0.5 + 0.28 * cos(t * 0.9)), t, 0.0),

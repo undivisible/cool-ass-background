@@ -119,9 +119,10 @@ export function createTrackSync(background, onStatus = () => {}) {
   let generation = 0, key = null, controller;
   return {
     async update(track) {
-      if (!track || track.id === key) return;
+      if (!track) return;
       const ticket = ++generation;
       controller?.abort(); controller = new AbortController();
+      if (track.id === key) return;
       try {
         const colors = track.colors || await paletteFromArtwork(track.artwork, { signal: controller.signal });
         if (ticket !== generation) return;
@@ -131,7 +132,7 @@ export function createTrackSync(background, onStatus = () => {}) {
         if (ticket === generation) onStatus(`Keeping palette: ${error.message}`);
       }
     },
-    dispose() { ++generation; controller?.abort(); },
+    dispose() { ++generation; controller?.abort(); key = null; },
   };
 }
 

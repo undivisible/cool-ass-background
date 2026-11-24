@@ -26,6 +26,7 @@ public final class FieldWallpaper extends WallpaperService {
         EGLDisplay display = EGL14.EGL_NO_DISPLAY;
         EGLContext context;
         EGLSurface surface;
+        FloatBuffer vertices;
         int program, texture, width = 1, height = 1;
         boolean visible, initialized, fetching;
         long start, lastPoll, fadeStart;
@@ -64,7 +65,7 @@ public final class FieldWallpaper extends WallpaperService {
                 GLES20.glDeleteShader(v); GLES20.glDeleteShader(f);
                 if (ok[0] == 0) throw new IllegalStateException(GLES20.glGetProgramInfoLog(program));
                 GLES20.glUseProgram(program);
-                var vertices = ByteBuffer.allocateDirect(48).order(ByteOrder.nativeOrder()).asFloatBuffer(); vertices.put(new float[]{-1,-1,1,-1,-1,1,-1,1,1,-1,1,1}).position(0);
+                vertices = ByteBuffer.allocateDirect(48).order(ByteOrder.nativeOrder()).asFloatBuffer(); vertices.put(new float[]{-1,-1,1,-1,-1,1,-1,1,1,-1,1,1}).position(0);
                 int position = GLES20.glGetAttribLocation(program,"a_position"); GLES20.glEnableVertexAttribArray(position); GLES20.glVertexAttribPointer(position,2,GLES20.GL_FLOAT,false,0,vertices);
                 var atlas = Bitmap.createBitmap(240,32,Bitmap.Config.ARGB_8888); var canvas = new Canvas(atlas); var paint = new Paint(Paint.ANTI_ALIAS_FLAG); paint.setColor(Color.WHITE); paint.setTypeface(Typeface.MONOSPACE); paint.setTextSize(24); paint.setTextAlign(Paint.Align.CENTER);
                 String chars = ".,:;-=+*#%"; for (int i=0;i<10;i++) canvas.drawText(chars.substring(i,i+1),i*24+12,24,paint);
