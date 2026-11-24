@@ -16,6 +16,7 @@ button:hover, summary:hover, a:hover { background: #26344c; }
 #next-track { flex-basis: 100%; }
 #status { margin: 10px 0 0; font-size: 11px; line-height: 1.5; color: #c9d3e1; overflow-wrap: anywhere; }
 #status:empty { display: none; }
+details { margin-top: 6px; }
 summary { display: flex; align-items: center; min-height: 44px; font-size: 12px; border-radius: 4px; }
 summary::before { content: '+'; margin-right: 8px; }
 details[open] summary::before { content: '−'; }

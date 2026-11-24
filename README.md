@@ -87,13 +87,13 @@ See the verification table below before treating a binary as device-tested.
 
 | Download | Setup |
 |---|---|
-| [macOS Apple Silicon](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.1/cool-ass-background-macos-arm64.zip) | Unzip, open app, use ≋ menu |
-| [macOS Intel](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.1/cool-ass-background-macos-x86_64.zip) | Unzip, open app, use ≋ menu |
-| [Windows x64](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.1/cool-ass-background-windows-x64.zip) | Unzip whole archive, run executable |
-| [Android preview APK](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.1/cool-ass-background-android-debug.apk) | Install, configure, choose live wallpaper |
-| [Website module + demo](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.1/cool-ass-background-web.zip) | Unzip onto your own HTTPS site |
+| [macOS Apple Silicon](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.2/cool-ass-background-macos-arm64.zip) | Unzip, open app, use ≋ menu |
+| [macOS Intel](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.2/cool-ass-background-macos-x86_64.zip) | Unzip, open app, use ≋ menu |
+| [Windows x64](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.2/cool-ass-background-windows-x64.zip) | Unzip whole archive, run executable |
+| [Android preview APK](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.2/cool-ass-background-android-debug.apk) | Install, configure, choose live wallpaper |
+| [Website module + demo](https://github.com/undivisible/cool-ass-background/releases/download/v0.1.2/cool-ass-background-web.zip) | Unzip onto your own HTTPS site |
 
-Version 0.1.1 uses **Background** for all product display names. Repository,
+Version 0.1.2 uses **Background** for all product display names. Repository,
 archive filenames, Windows executable name and application identifiers stay
 unchanged for compatibility. Historical 0.1.0 binaries retain their original labels.
 
